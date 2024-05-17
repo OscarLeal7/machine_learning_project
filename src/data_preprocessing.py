@@ -1,29 +1,23 @@
 import pandas as pd
+import os
 
-def load_data():
-    # Substitua "caminho/do/arquivo.csv" pelo caminho real do seu arquivo CSV
-    return pd.read_csv("caminho/do/arquivo.csv")
+# Definindo os caminhos para os dados
+raw_data_path = os.path.join('data', 'raw', 'raw_data.csv')
+processed_data_path = os.path.join('data', 'processed', 'processed_data.csv')
 
-def save_data(data):
-    # Substitua "caminho/do/arquivo_preprocessado.csv" pelo caminho desejado para salvar o arquivo pré-processado
-    data.to_csv("caminho/do/arquivo_preprocessado.csv", index=False)
+def load_raw_data(path):
+    return pd.read_csv(path)
 
-def preprocess_data(data):
-    # Implemente aqui o pré-processamento dos seus dados
-    # Por exemplo: limpeza, normalização, codificação de variáveis categóricas, etc.
-    preprocessed_data = data
-    
-    return preprocessed_data
+def process_data(df):
+    df = df.dropna()
+    df = (df - df.mean()) / df.std()
+    return df
 
-def main():
-    # Carregar os dados
-    data = load_data()
-    
-    # Pré-processar os dados
-    preprocessed_data = preprocess_data(data)
-    
-    # Salvar os dados pré-processados
-    save_data(preprocessed_data)
+def save_processed_data(df, path):
+    df.to_csv(path, index=False)
 
 if __name__ == "__main__":
-    main()
+    raw_data = load_raw_data(raw_data_path)
+    processed_data = process_data(raw_data)
+    save_processed_data(processed_data, processed_data_path)
+    print(f'Dados processados salvos em: {processed_data_path}')
