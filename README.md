@@ -25,3 +25,4 @@ Este repositório contém todos os arquivos relacionados ao projeto de Machine L
 Sinta-se à vontade para contribuir com melhorias, correções ou novos recursos. Abra uma issue ou envie um pull request!
 
 
+# machine_learning_project
