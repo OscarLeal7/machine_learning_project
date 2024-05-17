@@ -1,2 +1,6 @@
 # Ignorar pasta do ambiente virtual
 env/
+
+# Arquivos grandes do TensorFlow e Clang
+env/Lib/site-packages/tensorflow/python/_pywrap_tensorflow_internal.pyd
+env/Lib/site-packages/clang/native/libclang.dll
