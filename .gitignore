@@ -1,1 +1,2 @@
-# Arquivos e pastas a serem ignorados pelo Git
+# Ignorar pasta do ambiente virtual
+env/
